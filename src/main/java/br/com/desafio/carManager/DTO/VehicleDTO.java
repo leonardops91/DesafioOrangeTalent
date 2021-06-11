@@ -10,27 +10,21 @@ public class VehicleDTO {
 	private String model;
 	private String year;
 	private String rotationDay;
-	private boolean rotationActive;
+	private String rotationActive;
 	
 	public VehicleDTO(Vehicle vehicle) {
 		this.brand=vehicle.getBrand();
 		this.model=vehicle.getModel();
 		this.year=vehicle.getYear();
 		this.rotationDay=vehicle.getRotationDay();
-		this.rotationActive=vehicle.getRotationActive();
+		if(vehicle.isRotationActive()) {
+			System.out.println("entrei");
+			this.rotationActive = "Sim";
+		}else {
+			this.rotationActive="Não";
+		}
 	}
 	
-
-	public boolean isRotationActive() {
-		return rotationActive;
-	}
-
-
-	public void setRotationActive(boolean rotationActive) {
-		this.rotationActive = rotationActive;
-	}
-
-
 	public String getBrand() {
 		return brand;
 	}
@@ -45,6 +39,10 @@ public class VehicleDTO {
 
 	public String getRotationDay() {
 		return rotationDay;
+	}
+	
+	public String getRotationActive() {
+		return rotationActive;
 	}
 	
 	public static List<VehicleDTO> convert(List<Vehicle> vehicles){

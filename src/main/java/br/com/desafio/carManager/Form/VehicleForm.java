@@ -34,7 +34,6 @@ public class VehicleForm {
 	public Vehicle convert() {
 		Vehicle vehicle = new Vehicle(brand, model, year);
 		vehicle.setRotationDay();
-		vehicle.setRotationActive();
 		return vehicle;
 	}
 }
