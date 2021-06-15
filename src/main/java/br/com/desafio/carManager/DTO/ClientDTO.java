@@ -4,13 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.desafio.carManager.Entity.Client;
-import br.com.desafio.carManager.Entity.Vehicle;
 
 public class ClientDTO {
 	private int id;
 	private String name;
 	private String email;
-	private List<Vehicle> vehicles;
+	private List<VehicleDTO> vehicles;
 	
 	public ClientDTO(Client client) {
 		this.id=client.getId();
@@ -28,7 +27,7 @@ public class ClientDTO {
 	public String getEmail() {
 		return email;
 	}
-	public List<Vehicle> getVehicles() {
+	public List<VehicleDTO> getVehicles() {
 		return vehicles;
 	}
 	

@@ -2,12 +2,14 @@ package br.com.desafio.carManager.Controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,5 +41,14 @@ public class ClientController {
 		clientRepository.save(client);
 		URI uri = uriBuilder.path("/clients/{id}").buildAndExpand(client.getId()).toUri();
 		return ResponseEntity.created(uri).body(new ClientDTO(client));
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<ClientDTO> getClient( @PathVariable int id) {
+		Optional<Client> client = clientRepository.findById(id);
+		if(client.isPresent()) {
+			return ResponseEntity.ok(new ClientDTO(client.get()));
+		}
+		return ResponseEntity.notFound().build();
 	}
 }

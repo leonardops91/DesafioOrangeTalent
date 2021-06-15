@@ -11,6 +11,7 @@ public class VehicleDTO {
 	private String year;
 	private String rotationDay;
 	private String rotationActive;
+	private double price;
 	
 	public VehicleDTO(Vehicle vehicle) {
 		this.brand=vehicle.getBrand();
@@ -45,8 +46,13 @@ public class VehicleDTO {
 		return rotationActive;
 	}
 	
+	public double getPrice() {
+		return price;
+	}
+	
 	public static List<VehicleDTO> convert(List<Vehicle> vehicles){
 		return vehicles.stream().map(VehicleDTO::new).collect(Collectors.toList());
 	}
+
 
 }

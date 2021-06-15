@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import br.com.desafio.carManager.DTO.VehicleDTO;
+
 @Entity
 public class Client {
 	@Id
@@ -109,8 +111,8 @@ public class Client {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		this.birthday = sdf.parse(birthday);
 	}
-	public List<Vehicle> getVehicles() {
-		return vehicles;
+	public List<VehicleDTO> getVehicles() {
+		return VehicleDTO.convert(vehicles);
 	}
 	public void setVehicles(Vehicle vehicle) {
 		vehicles.add(vehicle);

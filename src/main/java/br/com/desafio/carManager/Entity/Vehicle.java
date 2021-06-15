@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Vehicle {
+	
 	@Id
 	@GeneratedValue
 	private int id;
@@ -17,6 +18,7 @@ public class Vehicle {
 	private String model;
 	private String year;
 	private String rotationDay;
+	private double price;
 	
 	
 	public Vehicle() {};
@@ -136,10 +138,19 @@ public class Vehicle {
 		String today = new DateFormatSymbols().getWeekdays()[cal.get(Calendar.DAY_OF_WEEK)];
 		return (rotationDay.compareToIgnoreCase(today) == 0);
 	}
+	
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	public double getPrice() {
+		return price;
+	}
 
 	@Override
 	public String toString() {
 		return  "\n" + "Marca: " + brand + " " + "\n" + "Modelo: " + model  + "\n" + "Ano: " + year  + "\n" + "Dia no rodízio: " + rotationDay  + "\n" + "Rodizio Ativo? " + isRotationActive() + "\n";
 	}
+
 
 }
