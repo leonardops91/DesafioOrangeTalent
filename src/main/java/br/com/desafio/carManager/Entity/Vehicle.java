@@ -18,7 +18,6 @@ public class Vehicle {
 	private String model;
 	private String year;
 	private String rotationDay;
-	private double price;
 	
 	
 	public Vehicle() {};
@@ -139,13 +138,6 @@ public class Vehicle {
 		return (rotationDay.compareToIgnoreCase(today) == 0);
 	}
 	
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	
-	public double getPrice() {
-		return price;
-	}
 
 	@Override
 	public String toString() {
